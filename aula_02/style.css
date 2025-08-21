@@ -1,0 +1,35 @@
+p{
+    color: rgb(252, 108, 252);
+}
+
+#d1{
+    background-color: rgb(255, 119, 119);
+}
+
+#d1 p {
+    color: red;
+}
+
+.d2{
+    background-color: rgb(253, 170, 253);
+}
+
+.purple{
+    background-color: rgb(253, 170, 253);
+}
+
+.size{
+    font-size: 18pt;
+}
+
+div p {
+    font-size: 25pt;
+}
+
+div:hover{
+    background-color: rgb(140, 140, 255);
+}
+
+a:visited{
+    color: gray;
+}
