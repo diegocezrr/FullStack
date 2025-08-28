@@ -1,0 +1,134 @@
+
+.container {
+    width: 100%;
+    height: 300px;
+    background-color: bisque;
+    border-style: solid;
+    border-color: indigo;
+    text-align: center;
+    position: relative;
+}
+
+.container img {
+    position: relative;
+    display: inline;
+    width: 250px;
+    height: 250px;           
+}
+
+.container h1 {
+    position: relative;
+    display: inline;
+    margin-left: 600px;
+    margin-right: 600px ;
+    bottom: 100px;
+    color: darkgreen;
+    
+}
+
+nav {
+    background-color: lightskyblue;
+    width: 1000;
+    height: 50px;
+    text-align: center;
+}
+
+nav a{
+    position: relative;
+    top: 15px;
+    padding: 60px;
+    text-decoration: none;
+    color: red;
+}
+
+#textos {
+    text-align: center;
+    color: indigo;
+    font-family: sans-serif;
+}
+
+#textos h2 {
+    color: black
+}
+
+.livros {
+    text-align: center;
+    width: 100%;
+}
+
+.livros img {
+    position: relative;
+    bottom: 40px;
+    width: 300px;
+    height: 420px;
+    padding: 50px;
+}
+
+.iframes {
+    text-align: center;
+}
+
+iframe {
+    padding: 20px;
+    width: 450px;
+    height: 400px
+}
+
+.contatosh {
+    text-align: center;
+}
+
+.contatos {
+    position: absolute;
+    text-align: center;
+    left: 770px;                   
+    border-style: dashed;
+}
+
+.cabecalho {
+    color: rgb(247, 0, 0);
+}
+
+td {
+    border-style: double;
+    color: black;
+}
+
+.blocoamarelo {
+    position: relative;
+    width: 400px;
+    top: 150px;
+    left: 740px;
+    background-color: yellow;
+}
+
+.blocoamarelo a {
+    color: red;
+}
+
+.container2 {
+    width: 100%;
+    height: 200px;
+    background-color: bisque;
+    text-align: center;
+    position: relative;
+    top: 200px;
+}
+
+.container2 h1 {
+    position: relative;
+    display: inline;
+    margin-left: 400px;
+    margin-right: 400px;
+    
+}
+
+.container2 img {
+    position: relative;
+    display: inline;
+    top: 50px;
+    width: 100px;
+    height: 100px;           
+}
+
+
