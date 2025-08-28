@@ -5,13 +5,15 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
-    text-decoration: none;
 }
 
 .navbar {
     background-color: #34495e;
     padding: 10px;
     text-align: center;
+    position: fixed;
+    top: 0px;
+    width: 100%;
 }
 
 .navbar a {
@@ -24,4 +26,42 @@ body {
 
 .navbar a:hover {
     color: #b4adff;
+}
+
+.projetos {
+    background-color: rgb(238, 238, 238);
+    max-width: 1200px;       
+    margin: 0 auto;      
+    padding: 20px;          
+    text-align: center;    
+    border-style: solid;
+    border-color: #34495e;
+    border-radius: 10px;
+}
+
+table {
+    position: relative;
+    top: 80px;
+}
+
+.cabecalho {
+    width: 300px;
+    border-style: solid;
+    border-color: #34495e;
+    background-color: #34495e;
+    color: white;
+}
+
+td{
+    border-style: solid;
+    border-color: #34495e;
+}
+
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #34495e;
 }

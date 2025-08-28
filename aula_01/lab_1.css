@@ -17,6 +17,9 @@ h1, h2, h3 {
     background-color: #34495e;
     padding: 10px;
     text-align: center;
+    position: fixed;
+    top: 0px;
+    width: 100%;
 }
 
 .navbar a {
