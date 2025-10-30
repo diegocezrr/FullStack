@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GET/POST e Templates</title>
+</head>
+<body>
+    <h1>
+        GET/POST e Templates
+    </h1>
+    <h2>
+        Exemplo de Uso de Métodos GET e POST
+    </h2>
+    <form action="/cadastrar">
+        <p for="nome">Nome:</p>
+            <input type="text" id="nome" name="nome" required>
+        <br><br>
+        <p for="nome">Email:</p>
+            <input type="email" id="email" name="email" required>
+        <br><br>
+        <p for="nome">Telefone:</p>
+            <input type="tel" id="telefone" name="telefone" required>
+        <br><br>
+        <p for="nome">Nascimento:</p>
+            <input type="date" id="nascimento" name="nascimento" required>
+        <br><br>
+        <input type="submit" formmethod="get" value="Enviar GET">
+        <input type="submit" formmethod="post" value="Enviar POST">
+    </form>
+
+    <h2>
+        Exemplo de FOR no EJS
+    </h2>
+    <form action="/for" method="get">
+        <p>Quantidade de DIV's a Serem Geradas</p>
+        <input type="number" id="qtde" name="qtde">
+    </form>
+    
+    <script src="servidor.js"></script>     
+</body>
+</html>
