@@ -38,8 +38,9 @@ body {
     height: 700px;
 }
 
-#canvas_1{
-    background-color: rgb(236, 236, 236);
-    margin-top: 50px;
-    margin-bottom: 10px;
+#mesa{
+    background-color: #006600;
+    border: 8px solid #3e2b00;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #000;
 }
