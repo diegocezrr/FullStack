@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco de Dados</title>
+</head>
+<body>
+    <h1>
+        CREATE:
+    </h1>
+    <form action="/cadastrar_usuario" method="post">
+        <p>
+            Nome:
+        </p>
+        <input type="text" name="nome" id="nome">
+
+        <p>
+            Login:
+        </p>
+        <input type="text" name="login" id="login">
+
+        <p>
+            Senha:
+        </p>
+        <input type="password" name="senha" id="senha">
+
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <h1>
+        READ:
+    </h1>
+    <form action="/logar_usuario" method="post">
+        <p>
+            Login:
+        </p>
+        <input type="text" name="login" id="login">
+
+        <p>
+            Senha:
+        </p>
+        <input type="password" name="senha" id="senha">
+
+        <input type="submit" value="Logar">
+    </form>
+</body>
+</html>

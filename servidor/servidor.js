@@ -3,10 +3,22 @@
  var express = require('express');
  var app = express();
  var color = require('colors')
+ var mongodb = require('mongodb')
+ let bodyParser = require("body-parser")
+
+ const MongoClient = mongodb.MongoClient;
+ const uri = `mongodb://localhost:27017`;
+ const client = new MongoClient(uri, { useNewUrlParser: true });
+
+
 
  app.use(express.static('./public'));
-app.set('view engine', 'ejs')
-app.set('views', './views');
+ app.set('view engine', 'ejs')
+ app.set('views', './views');
+ app.use(bodyParser.urlencoded({extended: false }))
+ app.use(bodyParser.json())
+
+
  var servidor = http.createServer(app);
  servidor.listen(80)
 
@@ -47,3 +59,37 @@ app.post('/for', function(req, res){
 });
 
 
+////////////////////////////////////////////
+
+var dbo = client.db("exemplo_bd");
+var usuarios = dbo.collection("usuarios");
+
+app.post("/cadastrar_usuario", function(req, resp) {
+    console.log(req.body)
+    var data = { db_nome: req.body.nome, db_login: req.body.login, db_senha: req.body.senha };
+
+    usuarios.insertOne(data, function (err) {
+      if (err) {
+        resp.render('resposta_usuario', {resposta: "Erro ao Cadastrar Usuário!"})
+      }
+      else {
+        resp.render('resposta_usuario', {resposta: "Usuário Cadastrado com Sucesso!"})        
+      };
+    });
+  });
+
+app.post("/logar_usuario", function(req, resp) {
+    var data = {db_login: req.body.login, db_senha: req.body.senha };
+
+    usuarios.find(data).toArray(function(err, items) {
+      console.log(items);
+      if (items.length == 0) {
+        resp.render('resposta_usuario', {resposta: "Usuário/senha não encontrado!"})
+      }else if (err) {
+        resp.render('resposta_usuario', {resposta: "Erro ao logar usuário!"})
+      }else {
+        resp.render('resposta_usuario', {resposta: "Usuário logado com sucesso!"})        
+      };
+    });
+
+  });
