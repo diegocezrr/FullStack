@@ -96,3 +96,63 @@ app.post("/logar_usuario", function(req, resp) {
 
 ////////////////////////////////////
 
+app.post("/cadastra", function(req, resp) {
+    console.log(req.body)
+    var data = { db_cpf: req.body.cpf, db_nome: req.body.nome, db_email: req.body.email, db_senha: req.body.senha };
+
+    usuarios.insertOne(data, function (err) {
+      if (err) {
+        resp.render('resposta_usuario', {resposta: "Erro ao Cadastrar Usuário!"})
+      }
+      else {
+        resp.render('resposta_usuario', {resposta: "Usuário Cadastrado com Sucesso!"})        
+      };
+    });
+  });
+
+app.post("/login", function(req, resp) {
+    var data = {db_cpf: req.body.cpf, db_senha: req.body.senha };
+
+    usuarios.find(data).toArray(function(err, items) {
+      console.log(items);
+      if (items.length == 0) {
+        resp.render('resposta_usuario', {resposta: "Usuário/Senha Não Encontrado!"})
+      }else if (err) {
+        resp.render('resposta_usuario', {resposta: "Erro ao Logar Usuário!"})
+      }else {
+        resp.render('resposta_usuario', {resposta: "Usuário Logado com Sucesso!"})        
+      };
+    });
+
+  });
+
+/////////////////////////////////////
+
+var postagem = dbo.collection("blog");
+
+app.get("/blog", function(req, resp) {
+ 
+    postagem.find({}).toArray(function(err, items) {
+      console.log(items);
+      resp.render('blog', {postagem: items})
+       
+    });
+
+
+  });
+app.get("/cadastrar_blog", function(req, resp) {
+    resp.redirect("/lab_09/cadastrar_post.html");
+});
+
+
+app.post("/criando_post", function(req, resp) {
+    var post = {bd_titulo: req.body.titulo, bd_resumo: req.body.resumo, bd_conteudo: req.body.conteudo};
+    postagem.insertOne(post, function (err) {
+      if (err) {
+        resp.render('post', {resposta: "Erro ao Cadastrar o Post!"})
+      }else {
+        resp.render('post', {resposta: "Post Cadastrada com Sucesso!"})        
+      };
+    }); 
+
+});

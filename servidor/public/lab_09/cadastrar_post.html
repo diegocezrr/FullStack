@@ -3,29 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="blog.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>
-        Cadastrar POST
-    </h1>
-    <form action="">
-        <p>
-            Título:
-        </p>
-        <input type="text" name="titulo">
-
-        <p>
-            Resumo:
-        </p>
-        <input type="text" name="resumo">
-
-        <p>
-            Conteúdo:
-        </p>
-        <input type="text" name="conteudo">
-
-        <input type="submit" value="Enviar">
-    </form>
+    <div class="container">
+        <h1>
+            Cadastrar POST
+        </h1>
+        <form action="/criando_post" method="post">
+            <p>
+                Título:
+            </p>
+            <input type="text" name="titulo">
+    
+            <p>
+                Resumo:
+            </p>
+            <input type="text" name="resumo">
+    
+            <p>
+                Conteúdo:
+            </p>
+            <input type="text" name="conteudo">
+    
+            <input type="submit" value="Enviar" id="button">
+        </form>
+    </div>
 </body>
 </html>

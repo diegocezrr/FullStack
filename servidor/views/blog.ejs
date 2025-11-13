@@ -1,14 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLOG</title>
+    <title>Blog</title>
 </head>
+<style>
+    body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.6;
+    background-color: lightsteelblue; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: 0;
+    padding: 20px;
+    }
+
+    h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    }
+
+    button {
+    background-color: #34495e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    }
+
+    button:hover {
+    background-color: #253546;
+    }
+
+    div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 30%;
+    margin: 10px auto;
+    text-align: center;
+    }
+
+    h2 {
+    color: #34495e;
+    margin-bottom: 10px;
+    }
+
+    P {
+        font-size: 20px;
+    }
+</style>
 <body>
-    <button type="submit">
-        Criar POST
-    </button>
-    
+    <div>
+    <h1>BLOG</h1>
+    <button onclick="window.open('/cadastrar_blog')" style="cursor: pointer;">CRIAR</button>
+   </div>
+  <br><br>
+  <%var i=1; for (var elemento of postagem) { %>
+    <div>
+        <h2>
+            POSTAGEM - <%=i%>
+        </h2>
+        <p>
+            <%= elemento.bd_titulo %>
+        </p>
+        <p>
+            <%= elemento.bd_resumo %>
+        </p>
+    <p>
+        <%= elemento.bd_conteudo %>
+    </p>
+</div><br><br>
+  <% i++;} %>
+
+
+
 </body>
 </html>

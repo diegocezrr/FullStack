@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <nav class="navbar">
+        <a href="index.html">HOME</a>
+        <a href="projects.html">PROJETOS</a>
+    </nav>
+   <div class="container">
+    <h1>
+        Login
+    </h1>   
+    <form action="/login" method="post">
+      <input type="text" name="cpf" placeholder="CPF" required>
+      <input type="password" name="senha" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <a href="cadastro.html">Não Possui Conta? Cadastro</a>
+  </div>
 </body>
 </html>
