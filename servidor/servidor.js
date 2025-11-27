@@ -9,26 +9,20 @@ const MongoClient = mongodb.MongoClient;
 const uri = `mongodb://localhost:27017`;
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
-// =========================
-// EXPRESS CONFIG
-// =========================
+
 app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// =========================
-// SERVIDOR
-// =========================
+
 var servidor = http.createServer(app);
 servidor.listen(80);
 
 console.log('Servidor Ativo...'.rainbow);
 
-// =========================
-// HOME E ROTAS ANTIGAS
-// =========================
+
 app.get('/', function(req, res){
     res.redirect("aula_01/index.html");
 });
@@ -57,41 +51,34 @@ app.post('/for', function(req, res){
     res.render('for.ejs', {qtde})
 });
 
-// =========================
-// CONEXÃO MONGODB
-// =========================
 
 client.connect().then(() => {
 
     var dbo = client.db("exemplo_bd");
 
-    // Coleções da lição antiga
     var usuarios = dbo.collection("usuarios");
     var postagem = dbo.collection("blog");
 
-    // Coleções da lição atual (corrigido)
     var users = dbo.collection("users");
     var cars = dbo.collection("cars");
 
     console.log("MongoDB conectado!".green);
 
-    // =========================
-    // USUÁRIOS - LIÇÃO ANTIGA
-    // =========================
+   
+  });
 
-    app.post("/cadastrar_usuario", function(req, resp) {
-        console.log(req.body)
-        var data = { db_nome: req.body.nome, db_login: req.body.login, db_senha: req.body.senha };
+  app.post("/cadastrar_usuario", function(req, resp) {
+      console.log(req.body)
+      var data = { db_nome: req.body.nome, db_login: req.body.login, db_senha: req.body.senha };
 
-        usuarios.insertOne(data, function (err) {
-        if (err) {
-            resp.render('resposta_usuario', {resposta: "Erro ao Cadastrar Usuário!"})
-        }
-        else {
-            resp.render('resposta_usuario', {resposta: "Usuário Cadastrado com Sucesso!"})        
-        };
-        });
-    });
+      usuarios.insertOne(data, function (err) {
+      if (err) {
+          resp.render('resposta_usuario', {resposta: "Erro ao Cadastrar Usuário!"})
+      }
+      else {
+          resp.render('resposta_usuario', {resposta: "Usuário Cadastrado com Sucesso!"})        
+      };
+      });
 
     app.post("/logar_usuario", function(req, resp) {
         var data = {db_login: req.body.login, db_senha: req.body.senha };
@@ -109,9 +96,7 @@ client.connect().then(() => {
 
     });
 
-    // =========================
-    // OUTRAS LIÇÕES (mantidas)
-    // =========================
+   
 
     app.post("/cadastra", function(req, resp) {
         console.log(req.body)
@@ -142,9 +127,7 @@ client.connect().then(() => {
         });
     });
 
-    // =========================
-    // BLOG
-    // =========================
+  
 
     app.get("/blog", function(req, resp) {
         postagem.find({}).toArray(function(err, items) {
@@ -173,9 +156,7 @@ client.connect().then(() => {
         }); 
     });
 
-    // =========================
-    // LIÇÃO ATUAL — USERS
-    // =========================
+   
 
     app.post("/register", function(req, resp) {
         var data = { 
@@ -210,9 +191,7 @@ client.connect().then(() => {
 
     });
 
-    // =========================
-    // CARROS
-    // =========================
+  
 
     app.get("/cars", function(req, resp) {
         cars.find().toArray(function(err, items) {
@@ -287,9 +266,7 @@ client.connect().then(() => {
 
     });
 
-    // =========================
-    // VENDER CARRO (CORRIGIDO)
-    // =========================
+    
 
     app.get("/sell_car", function(req, resp) {
        resp.render("sell_car");
@@ -325,5 +302,5 @@ client.connect().then(() => {
     });
 
 
-});  // Fim do .connect()
+});
 
