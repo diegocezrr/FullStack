@@ -156,3 +156,126 @@ app.post("/criando_post", function(req, resp) {
     }); 
 
 });
+
+///////////////////////////////////////////////////////////////////////////
+
+  var dbo = client.db("exemplo_bd");
+  var usuarios = dbo.collection("users");
+  var cars = dbo.collection("cars");
+
+  app.post("/register", function(req, resp) {
+      var data = { db_nome: req.body.name, db_email: req.body.email, db_password: req.body.password};
+
+      users.insertOne(data, function (err) {
+        if (err) {
+          resp.render('resposta_usuario', {resposta: "Erro ao Cadastrar Usuário!"})
+        }
+        else {
+          resp.render('resposta_usuario', {resposta: "Usuário Cadastrado com Sucesso!"})        
+        };
+      });
+    });
+
+  app.post("/log", function(req, resp) {
+      var data = {db_email: req.body.email, db_password: req.body.password};
+
+      users.find(data).toArray(function(err, items) {
+        console.log(items);
+        if (items.length == 0) {
+          resp.render('resposta_usuario', {resposta: "Usuário/Senha não encontrado!"})
+        }else if (err) {
+          resp.render('resposta_usuario', {resposta: "Erro ao Logar!"})
+        }else {
+          resp.render('resposta_usuario', {resposta: "Usuário Logado com Sucesso!"})        
+        };
+      });
+
+    });
+
+  app.get("/cars", function(req, resp) {
+      cars.find().toArray(function(err, items) {
+          if (err) {
+              resp.render('resposta_carros', {resposta: "Erro ao Carregar Carros!"});
+          } else if (items.length === 0){
+              resp.render('resposta_carros', {resposta: "Nenhum Carro Disponível"});
+          } 
+          else {
+              resp.render('cars', {cars: items});
+          }
+      });
+  });
+
+  app.post("/car_registration", function(req, resp) {
+      var data = { db_marca: req.body.marca, db_modelo: req.body.modelo, db_ano: req.body.ano, db_preco: req.body.preco, db_qtde: req.body.qtde};
+
+      users.insertOne(data, function (err) {
+        if (err) {
+          resp.render('resposta_carros', {resposta: "Erro ao Cadastrar Carro!"})
+        }
+        else {
+          resp.render('resposta_carros', {resposta: "Carro Cadastrado com Sucesso!"})        
+        };
+      });
+    });
+
+  app.post("/car_updater", function(req, resp) {
+      var data = { _id: new mongodb.ObjectId(req.body.id) };
+      var newData = { $set: {db_preco: req.body.preco} };
+
+      cars.updateOne(data, newData, function (err, result) {
+        console.log(result);
+        if (result.modifiedCount == 0) {
+          resp.render('resposta_carros', {resposta: "Carro Não Encontrado!"})
+        }else if (err) {
+          resp.render('resposta_carros', {resposta: "Erro ao Atualizar Carro"})
+        }else {
+          resp.render('resposta_carros', {resposta: "Carro Atualizado com Sucesso!"})        
+        };
+      });
+    
+    });
+
+    app.post("/remove_car", function(req, resp) {
+      var data = { _id: new mongodb.ObjectId(req.body.id) };
+    
+      cars.deleteOne(data, function (err, result) {
+        console.log(result);
+        if (result.deletedCount == 0) {
+          resp.render('resposta_carros', {resposta: "Carro não Encontrado!"})
+        }else if (err) {
+          resp.render('resposta_carros', {resposta: "Erro ao Remover Carro!"})
+        }else {
+          resp.render('resposta_carros', {resposta: "Carro Removido com Sucesso!"})        
+        };
+      });
+
+    });
+
+  app.post("/sell_car", function(req, resp) {
+      var data = { _id: new mongodb.ObjectId(req.body.id) }; 
+
+      var newData = { $inc: { qtde: -1 } }; 
+
+      cars.updateOne(data, newData, function(err, result) {
+          if (err) {
+              resp.render('resposta_carros', { resposta: "Erro ao vender carro!" });
+          } else if (result.modifiedCount == 0) {
+              resp.render('resposta_carros', { resposta: "Carro não encontrado!" });
+          } else {
+              cars.findOne(data, function(err, carro) {
+                  if (err) {
+                      resp.render('resposta_carros', { resposta: "Erro ao verificar a quantidade do carro!" });
+                  } else {
+                      if (car.qtde == 0) {
+                          resp.render('resposta_carros', { resposta: "Carro esgotado! Quantidade zerada." });
+                      } else {
+                          resp.render('resposta_carros', { resposta: "Venda realizada com sucesso! Quantidade restante: " + car.qtde });
+                      }
+                  }
+              });
+          }
+      });
+  });
+
+
+

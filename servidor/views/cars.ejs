@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Carros</title>
+</head>
+<body>
+    <h1>Carros Disponíveis</h1>
+    <ul>
+        <% cars.forEach(carro => { %>
+            <li>
+                <%= carro.db_marca %> - <%= carro.db_modelo %> - R$ <%= carro.db_preco %> - Quantidade: <%= carro.db_qtde %>
+                <form action="/sell_car" method="POST" style="display:inline;">
+                    <input type="hidden" name="id" value="<%= carro._id %>">
+                    <button type="submit">Vender</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+    <a href="/car_registration">Cadastrar Novo Carro</a>
+    <a href="/car_updater">Atualizar Preço do Carro</a>
+    <a href="/remove_car">Remover Carro</a>
+</body>
+</html>
