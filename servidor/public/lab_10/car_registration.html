@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Carro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cr.css">
 </head>
 <body>
     <header>
@@ -11,25 +13,30 @@
             <ul>
                 <li><a href="../lab_10/cadastro.html">Cadastro</a></li>
                 <li><a href="../lab_10/login.html">Login</a></li>
-                <li><a href="/cars">Ver Carros</a></li>
-                <li><a href="../lab_10/car_registration.html">Registrar Carro</a></li>
-                <li><a href="/r"></a></li>
+                <li><a href="/cars">Carros</a></li>
+                <li><a href="../lab_10/car_registration.html">Cadastrar Carro</a></li>
+                <li><a href="/car_updater">Atualizar Carro</a></li>
+                <li><a href="/remove_car">Remover Carro</a></li>
             </ul>
         </nav>
     </header>
-    <h1>Cadastrar Novo Carro</h1>
-    <form action="/car_registration" method="POST">
-        <input type="text" name="marca" placeholder="Marca" required><br>
+    <div class="auth-container">
 
-        <input type="text" name="modelo" placeholder="Modelo" required><br>
+        <h1>Cadastrar Novo Carro</h1>
+        
+        <form action="/car_registration" method="POST">
+            <input type="text" name="marca" placeholder="Marca" required><br>
 
-        <input type="number" name="ano" placeholder="Ano" required><br>
+            <input type="text" name="modelo" placeholder="Modelo" required><br>
 
-        <input type="number" name="preco" placeholder="Preço" required><br>
+            <input type="number" name="ano" placeholder="Ano" required><br>
 
-        <input type="number" name="qtde" placeholder="Quantidade" required><br>
+            <input type="number" name="preco" placeholder="Preço" required><br>
 
-        <button type="submit">Cadastrar</button>
-    </form>
+            <input type="number" name="qtde" placeholder="Quantidade" required><br>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
 </body>
 </html>
